@@ -1,6 +1,7 @@
-class reversek {
+class Solution {
     public String reverseStr(String s, int k) {
-        int group = 0;
+         int k2= 0;
+        int k1= 0;
         String result ="";
         int l = s.length();
         if(s==null){
@@ -19,7 +20,7 @@ class reversek {
         else{
             
         //#for the normal case that l>2k
-            while((l-group*2*k-1)>=2*k){
+            while((l-group*2*k-1)>=2k){
                 String sub ="";
                 for(int i=group*2*k;i<group*2*k+k;i++){
                     sub = s.charAt(i)+sub;
@@ -30,7 +31,7 @@ class reversek {
                 }
                 group ++;
             }
-                if(l-group*2*k-1<k){
+                if(left_l<k){
                  //something reverse the structure   
                  String sub ="";
                 for(int i=group*2*k;i<l;i++){
@@ -52,8 +53,10 @@ class reversek {
                     return result;
                 }
             }
-        return result;
         }
+
+        return result;
+   }
 
     
     public String reverseHelper(String s){
@@ -74,3 +77,26 @@ class reversek {
         return s1+s2;
     }
     
+}
+
+public class MainClass {
+    public static String stringToString(String input) {
+        return JsonArray.readFrom("[" + input + "]").get(0).asString();
+    }
+    
+    public static void main(String[] args) throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        String line;
+        while ((line = in.readLine()) != null) {
+            String s = stringToString(line);
+            line = in.readLine();
+            int k = Integer.parseInt(line);
+            
+            String ret = new Solution().reverseStr(s, k);
+            
+            String out = (ret);
+            
+            System.out.print(out);
+        }
+    }
+}
